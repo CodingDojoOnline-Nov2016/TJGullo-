@@ -26,7 +26,6 @@ div {
 
 .sidebar {
 	width: 25%;
-	margin: 10px;
 	background-color: #E8E4EB;
 	border-radius: 15px;
 	text-decoration:none;
@@ -36,6 +35,10 @@ div {
 .sidebar a {
 text-decoration: none;
 vertical-align: 0px;
+}
+
+.sidebar li{
+	margin: 0px;
 }
 
 .body {
@@ -80,6 +83,10 @@ p{
 .no-dot
 {
 	list-style-type: none;
+}
+
+.no-dot li{
+	margin: 0px;
 }
 
 li{
