@@ -1,0 +1,138 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: Tahoma;
+}
+body {
+  width: 970px;
+  background-color: black;
+}
+div.container {
+  width: 970px;
+  margin: 0px auto;
+  background-color: black
+}
+header {
+  background: linear-gradient(to bottom, #ebebeb 1%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  width: 970px;
+}
+.header-logo {
+  margin-left: 15px;
+}
+
+h2.header-text {
+  display: inline-block;
+  vertical-align: top;
+  text-align: right;
+  width: 570px;
+  margin-top: 25px;
+  font-size: 14pt;
+}
+nav li {
+	display: inline;
+	margin: 0px 5px;
+	font-weight: bold;
+  font-size: 10pt;
+  text-align: center;
+}
+nav li.navhome {
+  margin-left: 20px;
+  border-left: 1px solid;
+  padding-left: 15px;
+}
+nav a {
+	text-decoration: none;
+	border-right: 1px solid;
+	padding-right: 15px;
+	color: gray;
+}
+ul.navbar {
+background: linear-gradient(to bottom, #f2f5f6 0%,#e3eaed 37%,#c8d7dc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  width: 970px;
+  height: 30px;
+}
+div.main-pic {
+  background-color: white;
+  padding: 5px;
+  margin-top: 10px;
+  margin-left: 20px;
+  width: 378px;
+  height: 255px;
+  display: inline-block;
+}
+
+div.main-content-box {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 545px;
+  margin-bottom: 10px;
+  height: 265px;
+  background: linear-gradient(to right, #4c4c4c 0%,#595959 12%,#474747 39%,#2c2c2c 56%,#2b2b2b 60%,#2b2b2b 60%,#000000 72%,#000000 83%,#000000 83%,#000000 88%,#111111 94%,#111111 94%,#131313 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+div.main-content-header {
+  color: black;
+  display: inline-block;
+  vertical-align: top;
+  background: linear-gradient(to bottom, #fbd15b 0%,#fec93b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  width: 546px;
+}
+
+div.main-content {
+  color: white;
+  display: inline;
+  width: 150px;
+  font-size: 10pt;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+#services{
+	height: 295px;
+}
+	#services a{
+		font-size: 12px;
+		font-weight: bold;
+		width: 90px;
+		margin-left: 110px;
+		background-color: #FACF5F;
+		text-decoration: none;
+		color: black;
+		border: 3px solid black;
+    margin-bottom: 15px;
+	}
+
+.service{
+	width: 223px;
+	height: 265px;
+	display: inline-block;
+	vertical-align: top;
+	background-color: #FEF5E3;
+	margin-left: 15.5px;
+	margin-top: 10px;
+}
+	.service h3{
+		height: 20px;
+		background: linear-gradient(to bottom, #fbd15b 0%,#fec93b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		padding: 5px;
+		padding-left: 10px;
+		font-size: 16px;
+	}
+
+	.service p{
+		font-size: 12px;
+		padding: 0px 10px 0px 10px;
+		height: 100px;
+	}
+
+  h2 {
+    margin-left: 10px;
+    font-size: 18px;
+  }
+
+  .main-content p{
+    margin-top: 10px;
+    margin-left: 10px;
+  }
