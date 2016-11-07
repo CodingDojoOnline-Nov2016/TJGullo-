@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery Basic 1</title>
+		<link rel="stylesheet" href="jquery.css" />
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$('#click').click(function(){
+				alert("you just made .click() be called!");
+			})
+			$('#addclass button').click(function(){
+				$('#addclass p').addClass('red');
+			})
+			$('#slidetoggle button').click(function(){
+				$('#loremimg').slideToggle("slow",function(){
+				});
+			});
+			$('#append button').click(function(){
+				$('#append').append('<p>Hello World!</p>');
+			})
+			$('#attr button').click(function(){
+				$('#attrimg').attr('width','500')
+				$('#attrimg').attr('title', 'Random Img')
+				$('#attrimg').attr('alt','http://lorempixel.com/400/200')
+			})
+			$('#before button').click(function(){
+				$('#before button').before($('<p>Hello from before!</p>'));
+			})
+			$('#html-button').click(function(){
+				$('#html-button p').html('Hello World!');
+			})
+			$('#text').click(function(){
+				$('#text p').text('Hello, we\'ve added text');
+			})
+			$('#val').click(function(){
+				var something = $("#val input").val();
+				$('#val p').text("You typed: " + something);
+			})
+			$('#toggle').click(function(){
+				$('#img2').toggle();
+			})
+			$('#hide .hide').click(function(){
+				$('#hide p').hide();
+			})
+			$('#hide .show').click(function(){
+				$('#hide p').show();
+			})
+			$('#slideDown .slideDown').click(function(){
+				$('#slideDown p').slideDown();
+			})
+			$('#slideDown .slideUp').click(function(){
+				$('#slideDown p').slideUp();
+			})
+			$('#fadeOut .fadeout').click(function(){
+				$('#fadeOut img').fadeOut('slow',function(){
+				});
+			})
+			$('#fadeOut .fadein').click(function(){
+				$('#fadeOut img').fadeIn('slow',function(){
+				});
+			})
+			$('#focus-test #focus').focus(function(){
+				$("#focus-test p").text("Yes, it does.")
+			})
+			$("#btn1").click(function(){
+	        $("div").data("greeting", "Hello World");
+	    });
+	    $("#btn2").click(function(){
+	        alert($("div").data("greeting"));
+	    });
+			$("#flip").click(function(){
+	        $("#panel").slideToggle("slow");
+	    });
+		});
+		</script>
+	</head>
+
+	<body>
+		<div id="click">
+				<h1>Click here to use .click() function</h1>
+		</div>
+		<div id="addclass">
+			<h1>AddClass</h1>
+			<button>AddClass</button>
+			<p>Click the button to add class 'red' to this paragraph</p>
+		</div>
+		<div id="slidetoggle">
+			<h1>Slidetoggle</h1>
+			<button>slidetoggle</button>
+			<p>Click the button to slidetoggle a hidden image</p>
+			<img id="loremimg" src="http://lorempixel.com/400/200">
+		</div>
+		<div id="append">
+			<h1>Append</h1>
+			<button>Append</button>
+			<p>Click the button to slidetoggle a hidden image</p>
+		</div>
+		<div id="attr">
+			<h1>Attribute</h1>
+			<button>Attr</button>
+			<img id="attrimg" src="http://lorempixel.com/400/200">
+		</div>
+		<div id="before">
+			<h1>Before</h1>
+			<button>Before</button>
+			<p>Orginal Text</p>
+		</div>
+		<div id="after">
+			<h1>After</h1>
+			<button>After</button>
+			<p>Orginal Text</p>
+		</div>
+		<div id="html-button">
+			<h1>html</h1>
+			<button>redoes the html</button>
+			<p>Click to replace me!</p>
+		</div>
+		<div id="text">
+			<h1>Text</h1>
+			<button>Add Text</button>
+			<p>Click the button to add text</p>
+		</div>
+		<div id="val">
+			<h1>Value</h1>
+			<button>Value</button>
+			<input type="text" value="your text here">
+			<p></p>
+		</div>
+		<div id="toggle">
+			<h1>Toggle</h1>
+			<button>Toggle</button>
+			<img id="img2" src="http://lorempixel.com/400/200">
+			<p></p>
+		</div>
+		<div id="hide">
+			<h1>Hide</h1>
+			<button class="hide">Hide</button>
+			<p>Click this button to hide this paragraph!</p>
+			<button class="show">Show</button>
+		</div>
+		<div id="slideDown">
+			<h1>slideDown</h1>
+			<p>Click the button to slideDown this text</p>
+			<button class="slideDown">slideDown</button>
+			<button class="slideUp">slideUp</button>
+		</div>
+		<div id="fadeOut">
+			<h1>Fade Out</h1>
+			<p>Hello Friends</p>
+			<img src="http://lorempixel.com/400/200">
+			<button class="fadein">Fade in</button>
+			<button class="fadeout">Fadeout</button>
+		</div>
+		<div id="data">
+			<h1>Data</h1>
+			<button id="btn1">Attach data to div element</button>
+			<button id="btn2">Get data attached to div element</button>
+		</div>
+		<div id="focus-test">
+			<h1>Focus test</h1>
+			<p>Does it work?</p>
+			<input type="text" id="focus">
+		</div>
+		<div id="flip">Click to slide panel down or up</div>
+		<div id="panel">Hello world!</div>
+
+	</body>
+</html>
