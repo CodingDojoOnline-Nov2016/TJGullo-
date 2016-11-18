@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang='en-us'>
+  <head>
+    <meta charset="utf-8" />
+    <title>Contact Card</title>
+    <script
+  src="https://code.jquery.com/jquery-2.2.4.js"
+  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+  crossorigin="anonymous"></script>
+    <script type='text/javascript'>
+      $(document).ready(function(){
+        console.log("working")
+
+        $("form").submit(function(e){
+          console.log(e)
+          e.preventDefault()
+          var fields = {
+            "firstName": $('#first-name').val(),
+            "lastName": $('#last-name').val(),
+            "description": $('#description').val()
+          }
+          var $ele = $('<div></div>')
+          $ele.html("<h2>"+ fields.firstName + " "+ fields.lastName + "</h2><p>"+ fields.description +"</p>")
+          $(".cards").append($ele)
+          $('input:first-child, input:nth-child(2), textarea').val(null)
+        })
+        $("div.cards").on("click", "h2", function(){
+          $(this).siblings().toggle("slow")
+        })
+  		})
+
+    </script>
+    <style>
+    *{
+      font-family: arial;
+      padding: 0px;
+      margin: 0;
+    }
+    form{
+      width: 25%;
+      padding: 20px;
+      display: inline-block;
+      vertical-align: top;
+    }
+      form input, form textarea {
+        margin-bottom: 10px;
+        width: 100%;
+        display: block;
+      }
+      div.cards{
+        width: 50%;
+        display: inline-block;
+        vertical-align: top;
+        outline: 1px dotted blue;
+      }
+        div.cards p {
+          display: none;
+        }
+    </style>
+  </head>
+  <body>
+    <div class='container'>
+      <div>
+        <form action="" method="post">
+          <input type="text" id="first-name" name="first_name" value="" placeholder="First Name" />
+          <input type="text" id="last-name" name="last_name" value="" placeholder="Last Name" />
+          <textarea id="description" name="description" rows="8" cols="40" placeholder="Enter a description"></textarea>
+          <input type="submit" value="Add user" />
+        </form>
+      </div>
+      <div class='cards'>
+
+      </div>
+    </div>
+  </body>
+</html>
