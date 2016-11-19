@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Ninjacat</title>
+		<meta name="TJ" content="Ninja Cat"/>
+		<link rel="stylesheet" href="ninjacat.css">
+		<script src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('#container img').click(function () {
+					var temp = $(this).attr('src');
+					$(this).attr('src', $(this).attr('data-alt-src'));
+					$(this).attr('data-alt-src', temp);
+				});
+				$( function() {
+    $( "#container" ).sortable();
+    $( "#container" ).disableSelection();
+  } );
+			});
+		</script>
+ 	</head>
+
+	<body>
+		<ul id="container">
+			<li><img src="img/ninja0.png" data-alt-src="img/cat0.png"></li>
+			<li><img src="img/ninja1.png" data-alt-src="img/cat1.png"></li>
+			<li><img src="img/ninja2.png" data-alt-src="img/cat2.png"></li>
+			<li><img src="img/ninja3.png" data-alt-src="img/cat3.png"></li>
+			<li><img src="img/ninja4.png" data-alt-src="img/cat4.png"></li>
+		</ul>
+	</body>
+</html>
