@@ -49,6 +49,16 @@
     }
     div.empty{
 }
+
+div#ghost1{
+  background: url('ghost.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+}
 div#score{
   border:1px solid white;
   width: 40px;
@@ -77,6 +87,7 @@ div#lives{
     <div id='container'>
       <div id='world'></div>
       <div id='pacman'></div>
+      <div id="ghost1"></div>
       <div id='score'>Score!</div>
       <div id='lives'>Lives!</div>
     </div>
@@ -95,19 +106,23 @@ div#lives{
       [2,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2],
       [2,1,2,1,1,1,1,1,3,1,1,2,1,1,1,1,1,3,2,2],
       [2,1,2,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,2,2],
-      [2,1,2,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,2],
+      [2,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
       [2,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
       [2,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
       [2,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
       [2,1,1,1,1,1,1,1,1,1,3,1,1,1,1,1,1,1,1,2],
       [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
     ];
-    var ghostDirection; 
+    var ghostDirection;
     var lives = 3;
     var score = 0;
     var pacman = {
       x: 1,
       y: 1
+    };
+    var ghost1 = {
+      x: 12,
+      y: 6
     };
 
     function displayWorld(){
@@ -135,6 +150,11 @@ div#lives{
       document.getElementById('pacman').style.top = pacman.y*20+"px";
       document.getElementById('pacman').style.left = pacman.x*20+"px";
     }
+    function displayGhost1(){
+      document.getElementById('ghost1').style.top = ghost1.y*20+"px";
+      document.getElementById('ghost1').style.left = ghost1.x*20+"px";
+    }
+
     function displayScore(){
       document.getElementById('score').innerHTML = score;
     }
@@ -142,8 +162,12 @@ div#lives{
       document.getElementById('lives').innerHTML = lives;
     }
 
+
     displayWorld();
     displayPacman();
+    displayGhost1();
+
+
 
     document.onkeydown = function(e){
       if(e.keyCode == 37 && world[pacman.y][pacman.x-1] != 2){
@@ -179,10 +203,34 @@ div#lives{
           if(lives == "Game Over!"){
             alert("GAME OVER! REFRESH PAGE!");
           }
+
+          function moveGhost1(){
+            var random = Math.floor(Math.random() * 4) + 37;
+            
+            if(random === 37 && world[ghost1.y][ghost1.x-1] != 2){
+              ghost1.x--;
+              }
+              else if(random === 39){
+                if(world[ghost1.y+1][ghost1.x] !== 2){
+                ghost1.x++;
+                }
+              }
+              else if(random === 38 && world[ghost1.y-1][ghost1.x] != 2){
+                ghost1.y--;
+              }
+              else if(random === 40 && world[ghost1.y+1][ghost1.x] != 2){
+                ghost1.y++;
+              }
+              displayGhost1()
+              displayWorld()
+          }
+          setInterval(moveGhost1, 800)
+
           displayWorld();
           displayScore();
           displayPacman();
           displayLives();
+          displayGhost1();
         }
       // console.log(e.keyCode);
 
