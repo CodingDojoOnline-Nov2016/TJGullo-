@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dojos</title>
+    <link rel='stylesheet' type='text/css' href="{{url_for('static', filename='css/style.css')}}">
+    <script type='text/javascript' src="{{ url_for('static', filename='js/my_script.js')}}"></script>
+  </head>
+  <body>
+    <p>new page for dojos</p>
+    <form action="action_page.php">
+  First name:<br>
+  <input type="text" name="firstname" value="Mickey">
+  <br>
+  Last name:<br>
+  <input type="text" name="lastname" value="Mouse">
+  <br><br>
+  <input type="submit" value="Submit">
+</form>
+
+<p>If you click the "Submit" button, the form-data will be sent to a page called "action_page.php".</p>
+
+  </body>
+</html>

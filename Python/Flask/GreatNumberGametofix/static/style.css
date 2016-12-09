@@ -1,0 +1,14 @@
+* {
+  margin: 5px;
+  text-align: center;
+}
+button {
+  margin-top: 10px;
+}
+.correct {
+  background-color: green;
+}
+
+.wrong {
+  background-color: red;
+}
