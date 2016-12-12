@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Process</title>
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"> -->
+  </head>
+  <body>
+    <div>
+      <h1>Thanks for submitting your information</h1>
+    </div>
+    <div>
+      <p>Name: {{ session['firstname'] }} {{ session['lastname'] }}</p>
+      <p>Email: {{ session['email'] }}</p>
+      <p>Password: {{ session['pw'] }}</p>
+    </div>
+
+  </body>
+</html>
