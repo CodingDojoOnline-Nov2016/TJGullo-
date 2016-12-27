@@ -1,0 +1,19 @@
+a {
+  text-decoration: none;
+  border: 1px solid gray;
+  padding: 2px;
+  border-radius: 3px;
+  background-color: #ccf5ff
+}
+
+h2 {
+  color: #004d00;
+}
+
+form, label, input {
+  color: #008000;
+}
+
+button {
+  color: blue;
+}
