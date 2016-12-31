@@ -9,13 +9,13 @@
     {{ friend.first_name }}
     <h2>Edit friend</h2>
     <form class="edit_form" action='/update' method="POST">
-      <input type="hidden" name"id" value="{{ friend.id }}">
+      <input type="hidden" name="id" value="{{ friend.id }}">
       <label for="first_name">First Name:<input type="text" name="first_name" id="first_name" value="{{ friend['first_name'] }}"></label>
       <label for="last_name">Last Name:<input type="text" name="last_name" id="last_name" value="{{ friend['last_name'] }}"></label>
       <label for="email">Email Address:<input type="text" name="email" id="email" value="{{ friend['email'] }}"></label>
       <input type="submit" value="Update">
     </form>
-    <form class="delete" action"/delete" method="POST">
+    <form class="delete" action="/delete/<id>" method="POST">
     <input type="hidden" name="id" value="{{ friend.id }}">
     <input type="submit" name="" value="Delete friend???">
     </form>

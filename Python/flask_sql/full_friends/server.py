@@ -4,7 +4,8 @@ import re
 
 app = Flask(__name__)
 mysql = MySQLConnector(app, 'full_friends')
-EMAIL_REGEX = re.compile(r'^[\w\.+_-]+\.[\w]*$')
+EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9\.\+_-]+@[a-zA-Z0-9\._-]+\.[a-zA-Z]*$')
+NAME_REGEX = re.compile(r'^[a-zA-Z]+$')
 app.secret_key = "super secret key"
 
 @app.route('/')
@@ -43,10 +44,11 @@ def update():
     print "check it out! --->", mysql.query_db(query, data)
     return redirect('/')
 
-@app.route('/delete', methods=['POST'])
+@app.route('/delete/<id>', methods=['POST'])
 def destroy(id):
     query = 'DELETE FROM friends WHERE id = :id'
     data = { 'id': request.form['id'] }
+    mysql.query_db(query, data)
     return redirect('/')
 
 app.run(debug=True)
