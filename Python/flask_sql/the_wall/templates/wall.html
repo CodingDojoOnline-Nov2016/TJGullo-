@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Logged in page</title>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body>
+<h1> Welcome {{ email }}</h1>
+{% if messages %}
+{% for message in messages %}
+  <h5>{{ message['message'] }}</h5>
+  {% for x in range (comments|count) %}
+  {% for comment in comments %}
+  {% if comment['message_id'] == message['id'] %}
+  <h6>{{ email }}{{ comment['comment '] }}</h6>
+  {% endif %}
+  {% endfor %}
+  {% endfor %}
+  <form id='commentform' action='/comment' method='post'>
+    <textarea rows="2" cols="50" id='comment' name='comment'>
+    </textarea>
+    <input type='hidden' name='comment_message' value={{ message['id'] }}>
+    <input type="submit" value="comment">
+  </form>
+  {% endfor %}
+  {% endif %}
+  <form id='submit' action='/submit' method='post'>
+    <textarea rows='4' cols='50' id='message' name='message'>
+    </textarea>
+    <input type='submit' value='message'>
+    {{ user_id }}
+  </form>
+  <form action='/'>
+    <button class='submit'>Logout</button>
+  </form>
+  </body>
+</html>
