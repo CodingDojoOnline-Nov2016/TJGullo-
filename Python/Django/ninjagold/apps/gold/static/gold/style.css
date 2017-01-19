@@ -1,0 +1,60 @@
+* {
+  margin: 5px;
+  text-align: center;
+}
+button {
+  margin-top: 0px;
+}
+.correct {
+  background-color: green;
+}
+
+.wrong {
+  background-color: red;
+}
+
+h2 {
+  color: yellow;
+  background-color: black;
+}
+
+a {
+  display: inline-block;
+}
+
+.buildings{
+	width: 223px;
+	height: 155px;
+	display: inline-block;
+	vertical-align: top;
+	background-color: #1a1a1a;
+	margin-left: 20px;
+	margin-top: 10px;
+  text-align: center;
+}
+	.buildings h3{
+		height: 20px;
+		padding: 5px;
+		padding-left: 10px;
+		font-size: 25px;
+    color: #ef7f2c;
+    margin-top: 30px;
+	}
+
+	.buildings p{
+		font-size: 18px;
+	  color: white;
+	}
+
+  .buildings img {
+    background-color: #515151;
+    padding: 5px;
+  }
+
+.win {
+  color: green;
+}
+
+.lose {
+  color: red;
+}
