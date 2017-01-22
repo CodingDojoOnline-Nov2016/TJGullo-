@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import League, Team, Player
+from django.db.models import Count
 
 from . import team_maker
 
@@ -10,7 +11,9 @@ def index(request):
 		"players": Player.objects.filter(last_name__icontains='flores').exclude(curr_team__team_name__icontains='roughriders'),
 
 	}
-
+    teams =
+    Team.objects.annotate(number_of_players=Count('all_players')).filter(number_of_players_gte=12).count()
+    print teams
 	return render(request, "leagues/index.html", context)
 
 def make_data(request):
