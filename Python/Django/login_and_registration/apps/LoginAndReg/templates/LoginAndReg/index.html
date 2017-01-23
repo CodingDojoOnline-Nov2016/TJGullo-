@@ -13,7 +13,7 @@
 
     <div class="registration">
     			<h2>Register</h2>
-    			<form name="registration" action="/success" method="post">
+    			<form name="registration" action="/register" method="post">
             {% csrf_token %}
     				<label>First Name:</label>
     				<input type="text" name="first_name" placeholder="Thomas">
@@ -22,20 +22,20 @@
     				<label>Email:</label>
     				<input type="text" name="email" placeholder="fakeemail@email.com">
     				<label>Password:</label>
-    				<input type="text" name="password">
+    				<input type="password" name="password">
     				<label>Confirm Password:</label>
-    				<input type="text" name="confirm_pw">
+    				<input type="password" name="confirm_pw">
     				<input type="submit" name="register" value="Register">
     			</form>
     	</div>
     		<div class="login">
     			<h2>Login</h2>
-    			<form name="login" action="/success" method="post">
+    			<form name="login" action="/login" method="post">
             {% csrf_token %}
     			<label>Email:</label>
     			<input type="text" name="email" placeholder="fakeemail@email.com">
     			<label>Password:</label>
-    			<input type="text" name="password">
+    			<input type="password" name="password">
     			<input type="submit" name="login" value="Login">
     			</form>
     		</div>

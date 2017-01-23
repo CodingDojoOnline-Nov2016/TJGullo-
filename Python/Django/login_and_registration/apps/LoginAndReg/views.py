@@ -5,9 +5,12 @@ from .models import User
 # Create your views here.
 
 def index(request):
-    return render(request, 'LoginAndReg/index.html')
+    context = {
+    'new_user': User.objects.all()
+    }
+    return render(request, 'LoginAndReg/index.html', context)
 
-def success(request):
+def register(request):
     print 'in process method'
     print request.POST
 
@@ -16,7 +19,7 @@ def success(request):
     if response[0] == False:
         for error in response[1]:
             messages.error(request, error)
-            print '7'*50
+            print 'response[0] was False'
             print error
             return redirect('/')
     else:
@@ -29,6 +32,19 @@ def success(request):
         #     pass
         return redirect('/success')
 
-def validation(request):
+def login(request):
+    response = User.objects.validate_login(request.POST)
+
+    if response[0] == False:
+        for error in response[1]:
+            messages.error(request, error)
+        return redirect('/')
+
+
+
+def success(request):
     print "*"*50
     return render(request, 'LoginAndReg/success.html')
+
+def logout(request):
+    return redirect('/')

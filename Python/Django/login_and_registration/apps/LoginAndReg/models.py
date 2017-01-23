@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 from datetime import datetime
 from django.db import models
-import re
+import re, bcrypt
 
 NAME_REGEX = re.compile(r'^[a-zA-Z\-]+$')
 EMAIL_REGEX = r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$'
@@ -39,20 +39,41 @@ class UserManager(models.Manager):
             errors.append('Confirm Password and Password must match!')
 
         if errors:
+            print "*"*50
+            print errors
+            print "*"*50
             return [False, errors]
         else:
+            hashed = bcrypt.hashpw(data['password'].encode(), bcrypt.gensalt())
             try:
-                user = self.create(first_name=first_name, last_name=last_name, email=email)
+                user = self.create(first_name=first_name, last_name=last_name, email=email, password=hashed)
             except NameError:
                 pass
             return [True, user]
+
+    def validate_login(self, data):
+        print 'Filtering for email'
+        if User.objects.filter(email=data['email']):
+            hashed = User.objects.get(email=data['email']).password
+            hashed = hashed.encode('utf-8')
+            print hashed
+            password = data['password']
+            password = password.encode('utf-8')
+            print password
+            if bcrypt.hashpw(password, hashed) == hashed:
+                return (True)
+        else:
+            print 'got to else statement on validate_login'
+            messages.error(request, 'Bad Email and/or Password')
+            return (False)
+
 
 
 class User(models.Model):
       first_name = models.CharField(max_length=200)
       last_name = models.CharField(max_length=200)
       email = models.EmailField()
-      password = models.CharField(max_length=200)
+      password = models.CharField(max_length=255)
       created_at = models.DateTimeField(auto_now_add=True)
       updated_at = models.DateTimeField(auto_now=True)
       objects = UserManager()
