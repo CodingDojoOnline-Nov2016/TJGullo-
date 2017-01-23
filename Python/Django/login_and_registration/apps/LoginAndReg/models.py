@@ -9,6 +9,7 @@ EMAIL_REGEX = r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$'
 class UserManager(models.Manager):
     def validate_new_user(self, data):
         print data
+        print "8"*50
         errors = []
         first_name = data['first_name']
         last_name = data['last_name']
@@ -40,9 +41,10 @@ class UserManager(models.Manager):
         if errors:
             return [False, errors]
         else:
-
-            user = self.create(first_name=first_name, last_name=last_name, email=email)
-            print users
+            try:
+                user = self.create(first_name=first_name, last_name=last_name, email=email)
+            except NameError:
+                pass
             return [True, user]
 
 
