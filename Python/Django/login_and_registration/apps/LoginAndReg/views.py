@@ -21,7 +21,7 @@ def register(request):
             messages.error(request, error)
             print 'response[0] was False'
             print error
-            return redirect('/')
+        return redirect('/')
     else:
         print '9'*50
         print 'got to the "else"'
@@ -34,11 +34,14 @@ def register(request):
 
 def login(request):
     response = User.objects.validate_login(request.POST)
-
     if response[0] == False:
         for error in response[1]:
             messages.error(request, error)
         return redirect('/')
+    else:
+        return redirect('/success')
+
+    
 
 
 

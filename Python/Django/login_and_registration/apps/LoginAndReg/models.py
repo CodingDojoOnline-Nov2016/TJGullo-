@@ -52,6 +52,7 @@ class UserManager(models.Manager):
             return [True, user]
 
     def validate_login(self, data):
+        errors = []
         print 'Filtering for email'
         if User.objects.filter(email=data['email']):
             hashed = User.objects.get(email=data['email']).password
@@ -64,8 +65,9 @@ class UserManager(models.Manager):
                 return (True)
         else:
             print 'got to else statement on validate_login'
-            messages.error(request, 'Bad Email and/or Password')
-            return (False)
+            errors.append('Bad Email and/or Password, Please try again')
+            return (False, errors)
+
 
 
 
