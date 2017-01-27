@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
 from .models import User
 # from .models import Email
@@ -11,43 +11,50 @@ def index(request):
     return render(request, 'LoginAndReg/index.html', context)
 
 def register(request):
-    print 'in process method'
-    print request.POST
+    if request.method == 'POST':
+        print 'in process method'
+        print request.POST
 
-    response = User.objects.validate_new_user(request.POST)
+        response = User.objects.validate_new_user(request.POST)
 
-    if response[0] == False:
-        for error in response[1]:
-            messages.error(request, error)
-            print 'response[0] was False'
-            print error
-        return redirect('/')
+        if response[0] == False:
+            for error in response[1]:
+                messages.error(request, error)
+                print 'response[0] was False'
+                print error
+            return redirect('/')
+        else:
+            print '9'*50
+            print 'got to the "else"'
+            print response[1]
+            # try:
+            #     request.session['first_name'] = response[1].first_name
+            # except MultiValueDictKeyError:
+            #     pass
+            return redirect('/success')
     else:
-        print '9'*50
-        print 'got to the "else"'
-        print response[1]
-        # try:
-        #     request.session['first_name'] = response[1].first_name
-        # except MultiValueDictKeyError:
-        #     pass
-        return redirect('/success')
+        return redirect('/')
 
 def login(request):
-    response = User.objects.validate_login(request.POST)
-    if response[0] == False:
-        for error in response[1]:
-            messages.error(request, error)
-        return redirect('/')
-    else:
-        return redirect('/success')
+    if request.method == 'POST':
+        response = User.objects.validate_login(request.POST)
+        if response[0] == False:
+            for error in response[1]:
+                messages.error(request, error)
+            return redirect('/')
+        else:
+            return redirect('/success')
 
-    
+    return redirect('/')
+
+
 
 
 
 def success(request):
-    print "*"*50
-    return render(request, 'LoginAndReg/success.html')
+        print "*"*50
+        return render(request, 'LoginAndReg/success.html')
+
 
 def logout(request):
     return redirect('/')

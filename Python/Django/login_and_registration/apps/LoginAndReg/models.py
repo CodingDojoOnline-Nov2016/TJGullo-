@@ -62,7 +62,7 @@ class UserManager(models.Manager):
             password = password.encode('utf-8')
             print password
             if bcrypt.hashpw(password, hashed) == hashed:
-                return (True)
+                return (True, password)
         else:
             print 'got to else statement on validate_login'
             errors.append('Bad Email and/or Password, Please try again')
