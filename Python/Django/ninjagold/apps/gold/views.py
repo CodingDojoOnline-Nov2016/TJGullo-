@@ -30,17 +30,28 @@ def process(request):
     if building == 'cave':
         cave_gold = int(random.randint(5,10))
         request.session['gold'] += cave_gold
+        request.session['activities'] = "Earned {} from the {} on {}".format(cave_gold, building, timestamp)
         print cave_gold
 
 
     if building == 'house':
         house_gold = int(random.randint(2,5))
         request.session['gold'] += house_gold
+        request.session['activities'].append("Earned {} from the {} on {}".format(house_gold, building, timestamp))
+        # sessionlist = request.session['activities']
+        # request.session['activities'] = "Earned {} from the {} on {}".format(house_gold, building, timestamp)
+        # sessionlist[0].append(request.session['activities'])
+        # request.session['activities'] = sessionlist
         print house_gold
 
     if building == 'casino':
         casino_gold = int(random.randint(-50,50))
         request.session['gold'] += casino_gold
+        request.session['activities'] = "Earned {} from the {} on {}".format(casino_gold, building, timestamp)
         print casino_gold
 
+    return redirect('/')
+
+def reset(request):
+    request.session['gold'] = 0
     return redirect('/')

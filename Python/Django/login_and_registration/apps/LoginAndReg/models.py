@@ -32,6 +32,10 @@ class UserManager(models.Manager):
         elif not re.match(EMAIL_REGEX, email):
             errors.append('email must be valid')
 
+        if User.objects.filter(email=email):
+            errors.append('Email already exists. Please try another email')
+
+
         if len(password) < 8:
             errors.append('Your Password must contain 8 or more characters!')
 
